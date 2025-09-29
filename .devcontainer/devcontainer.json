@@ -1,5 +1,5 @@
 {
-    "name": "uv",
+    "name": "ml-pipelines",
     "dockerComposeFile": "../.devcontainer/docker-compose.yml",
     "service": "vscode",
     "runServices": [
