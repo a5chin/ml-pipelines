@@ -28,7 +28,7 @@ dev = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["tasks"]
+packages = ["ml-pipelines"]
 
 [build-system]
 requires = ["hatchling"]
