@@ -1,10 +1,14 @@
 {
-    "pythonVersion": "3.13",
+    "pythonVersion": "3.14",
     "pythonPlatform": "All",
     "venv": ".venv",
     "typeCheckingMode": "standard",
     "include": [
-        "tools"
+        "const",
+        "environments",
+        "pipelines",
+        "tasks",
+        "tests"
     ],
     "exclude": [
         "**/__pycache__",
