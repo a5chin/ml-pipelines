@@ -1,5 +1,9 @@
+from typing import TYPE_CHECKING
+
 from pydantic import BaseModel
-from pydantic.types import PositiveInt
+
+if TYPE_CHECKING:
+    from pydantic.types import PositiveInt
 
 
 class TrainingSettings(BaseModel):
