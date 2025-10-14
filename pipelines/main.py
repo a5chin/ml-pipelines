@@ -1,17 +1,14 @@
 import tempfile
 from logging import getLogger
 from pathlib import Path
-from typing import TYPE_CHECKING
 
 from kfp import compiler
+from kfp.dsl import base_component  # noqa: TC002
 from kfp.registry import RegistryClient
 
 from const import ModelTypes
 from pipelines.settings import CLIArgs, PipelineCompileArgs
 from pipelines.types import sample
-
-if TYPE_CHECKING:
-    from kfp.dsl import base_component
 
 logger = getLogger(__name__)
 

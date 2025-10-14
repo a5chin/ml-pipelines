@@ -1,10 +1,8 @@
 from logging import getLogger
-from typing import TYPE_CHECKING
 
+from tasks.base import T_co  # noqa: TC001
 from tasks.export.settings import ExportSettings
 
-if TYPE_CHECKING:
-    from tasks.base import T_co
 logger = getLogger(__name__)
 
 

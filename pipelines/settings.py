@@ -1,12 +1,8 @@
-from typing import TYPE_CHECKING
-
 from pydantic import BaseModel, PositiveFloat, PositiveInt
 from pydantic_settings import BaseSettings
 
+from const import Environments, ModelTypes  # noqa: TC001
 from environments.settings import load_env_settings
-
-if TYPE_CHECKING:
-    from const import Environments, ModelTypes
 
 
 class CLIArgs(BaseSettings):

@@ -1,7 +1,7 @@
 import sys
-from typing import TYPE_CHECKING
 
 import pytest
+from pytest_mock import MockerFixture  # noqa: TC002
 
 import main
 from const import Environments, ModelTypes, Tasks
@@ -12,9 +12,6 @@ from tasks import (
     InferenceTask,
     TrainingTask,
 )
-
-if TYPE_CHECKING:
-    from pytest_mock import MockerFixture
 
 
 class TestMain:
