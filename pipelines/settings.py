@@ -1,7 +1,7 @@
 from pydantic import BaseModel, PositiveFloat, PositiveInt
 from pydantic_settings import BaseSettings
 
-from const import Environments, ModelTypes
+from const import Environments, ModelTypes  # noqa: TC001
 from environments.settings import load_env_settings
 
 
@@ -31,7 +31,7 @@ class PipelineCompileArgs(BaseModel):
     @classmethod
     def build(
         cls, env: Environments, pipeline_name: str, tag: str, model_type: ModelTypes
-    ) -> "PipelineCompileArgs":
+    ) -> PipelineCompileArgs:
         """Args for building PipelineCompileArgs.
 
         Args:

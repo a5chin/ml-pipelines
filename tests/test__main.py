@@ -1,7 +1,7 @@
 import sys
 
 import pytest
-from pytest_mock import MockerFixture
+from pytest_mock import MockerFixture  # noqa: TC002
 
 import main
 from const import Environments, ModelTypes, Tasks

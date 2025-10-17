@@ -3,7 +3,7 @@ from logging import getLogger
 from pathlib import Path
 
 from kfp import compiler
-from kfp.dsl import base_component
+from kfp.dsl import base_component  # noqa: TC002
 from kfp.registry import RegistryClient
 
 from const import ModelTypes

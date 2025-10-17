@@ -2,11 +2,23 @@
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
     "branchPrefix": "renovate/",
     "extends": [
-        "config:base"
+        "config:recommended"
     ],
     "lockFileMaintenance": {
-        "enabled": true
+        "enabled": true,
+        "automerge": true
     },
+    "packageRules": [
+        {
+            "automerge": true,
+            "matchUpdateTypes": [
+                "minor",
+                "patch",
+                "pin",
+                "digest"
+            ]
+        }
+    ],
     "rebaseWhen": "behind-base-branch",
     "schedule": [
         "* 0-23 * * *"

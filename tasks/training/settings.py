@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from pydantic.types import PositiveInt
+from pydantic.types import PositiveInt  # noqa: TC002
 
 
 class TrainingSettings(BaseModel):

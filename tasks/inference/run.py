@@ -1,6 +1,6 @@
 from logging import getLogger
 
-from tasks.base import T_co
+from tasks.base import T_co  # noqa: TC001
 from tasks.inference.settings import InferenceSettings
 
 logger = getLogger(__name__)

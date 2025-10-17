@@ -2,7 +2,7 @@ import importlib
 
 from pydantic import BaseModel
 
-from const import Environments
+from const import Environments  # noqa: TC001
 
 
 class EnvironmentSettings(BaseModel):

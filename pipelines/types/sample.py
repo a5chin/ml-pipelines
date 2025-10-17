@@ -1,8 +1,9 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, cast
+from typing import cast
 
 from kfp import dsl
+from kfp.dsl import base_component  # noqa: TC002
 
 from pipelines.components import (
     evaluation,
@@ -11,11 +12,7 @@ from pipelines.components import (
     inference,
     training,
 )
-
-if TYPE_CHECKING:
-    from kfp.dsl import base_component
-
-    from pipelines.settings import PipelineCompileArgs
+from pipelines.settings import PipelineCompileArgs  # noqa: TC001
 
 
 def get_pipeline(args: PipelineCompileArgs) -> base_component.BaseComponent:
