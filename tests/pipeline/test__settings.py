@@ -1,6 +1,6 @@
 import pytest
 
-from const import Environment, ModelTypes
+from const import Environment, ModelType
 from pipelines.settings import CLIArgs, PipelineCompileArgs
 
 
@@ -10,10 +10,10 @@ class TestArgs:
     @pytest.mark.parametrize(
         ("env", "pipeline_name", "tag", "model_type", "error"),
         [
-            (Environment.DEV, "sample-pipeline", "v1.1", ModelTypes.SAMPLE, None),
-            (Environment.PROD, "sample-pipeline", "v1.0", ModelTypes.SAMPLE, None),
-            ("qa", "sample-pipeline", "v1.0", ModelTypes.SAMPLE, ValueError),
-            (Environment.DEV, "sample-pipeline", 1.0, ModelTypes.SAMPLE, ValueError),
+            (Environment.DEV, "sample-pipeline", "v1.1", ModelType.SAMPLE, None),
+            (Environment.PROD, "sample-pipeline", "v1.0", ModelType.SAMPLE, None),
+            ("qa", "sample-pipeline", "v1.0", ModelType.SAMPLE, ValueError),
+            (Environment.DEV, "sample-pipeline", 1.0, ModelType.SAMPLE, ValueError),
             (
                 Environment.PROD,
                 "sample-pipeline",
@@ -28,7 +28,7 @@ class TestArgs:
         env: Environment,
         pipeline_name: str,
         tag: str,
-        model_type: ModelTypes,
+        model_type: ModelType,
         error: type,
     ) -> None:
         """Test CLIArgs attribute (valid and invalid cases)."""
@@ -62,7 +62,7 @@ class TestArgs:
                 Environment.DEV,
                 "pipeline-name",
                 "v1.0",
-                ModelTypes.SAMPLE,
+                ModelType.SAMPLE,
                 PipelineCompileArgs(
                     project_id="your-dev-project-id",
                     location="us-central1",
@@ -70,7 +70,7 @@ class TestArgs:
                     image="us-central1-docker.pkg.dev/your-dev-project-id/pipeline-name-docker/runner:v1.0",
                     pipeline_template_host="https://us-central1-kfp.pkg.dev/your-dev-project-id/pipeline-name-kfp",
                     tag="v1.0",
-                    model_type=ModelTypes.SAMPLE,
+                    model_type=ModelType.SAMPLE,
                 ),
             ),
         ],
@@ -80,7 +80,7 @@ class TestArgs:
         env: Environment,
         pipeline_name: str,
         tag: str,
-        model_type: ModelTypes,
+        model_type: ModelType,
         expected: PipelineCompileArgs,
     ) -> None:
         """Test PipelineCompileArgs attribute (valid and invalid cases)."""

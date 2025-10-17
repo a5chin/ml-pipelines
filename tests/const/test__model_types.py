@@ -1,18 +1,18 @@
 import pytest
 
-from const import ModelTypes
+from const import ModelType
 
 
-class TestModelTypes:
-    """Test suite for the ModelTypes."""
+class TestModelType:
+    """Test suite for the ModelType."""
 
     @pytest.mark.parametrize(
         ("model_type", "expected"),
         [
-            (ModelTypes.SAMPLE, "sample"),
+            (ModelType.SAMPLE, "sample"),
         ],
     )
-    def test_all(self, model_type: ModelTypes, expected: str) -> None:
+    def test_all(self, model_type: ModelType, expected: str) -> None:
         """Test All Model Types."""
         if model_type != expected:
             pytest.fail(f"Expected '{expected}', but got '{model_type}'")

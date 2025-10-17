@@ -6,14 +6,14 @@ from kfp import compiler
 from kfp.dsl import base_component  # noqa: TC002
 from kfp.registry import RegistryClient
 
-from const import ModelTypes
+from const import ModelType
 from pipelines.settings import CLIArgs, PipelineCompileArgs
 from pipelines.types import sample
 
 logger = getLogger(__name__)
 
 pipeline_types = {
-    ModelTypes.SAMPLE: sample.get_pipeline,
+    ModelType.SAMPLE: sample.get_pipeline,
 }
 
 
