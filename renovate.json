@@ -4,6 +4,9 @@
     "extends": [
         "config:recommended"
     ],
+    "labels": [
+        "renovate"
+    ],
     "lockFileMaintenance": {
         "enabled": true,
         "automerge": true
