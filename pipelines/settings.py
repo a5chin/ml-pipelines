@@ -1,14 +1,14 @@
 from pydantic import BaseModel, PositiveFloat, PositiveInt
 from pydantic_settings import BaseSettings
 
-from const import Environments, ModelTypes  # noqa: TC001
+from const import Environment, ModelTypes  # noqa: TC001
 from environments.settings import load_env_settings
 
 
 class CLIArgs(BaseSettings):
     """CLI Arguments."""
 
-    env: Environments
+    env: Environment
     pipeline_name: str
     tag: str
     model_type: ModelTypes
@@ -30,12 +30,12 @@ class PipelineCompileArgs(BaseModel):
 
     @classmethod
     def build(
-        cls, env: Environments, pipeline_name: str, tag: str, model_type: ModelTypes
+        cls, env: Environment, pipeline_name: str, tag: str, model_type: ModelTypes
     ) -> PipelineCompileArgs:
         """Args for building PipelineCompileArgs.
 
         Args:
-            env (Environments): Environment
+            env (Environment): Environment
             pipeline_name (str): Pipeline name
             tag (str): Tag for the image
             model_type (ModelTypes): Model type

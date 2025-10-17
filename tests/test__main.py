@@ -4,7 +4,7 @@ import pytest
 from pytest_mock import MockerFixture  # noqa: TC002
 
 import main
-from const import Environments, ModelTypes, Tasks
+from const import Environment, ModelTypes, Tasks
 from tasks import (
     EvaluationTask,
     ExportTask,
@@ -20,14 +20,14 @@ class TestMain:
     @pytest.mark.parametrize(
         ("env", "model_type"),
         [
-            (Environments.DEV, ModelTypes.SAMPLE),
-            (Environments.PROD, ModelTypes.SAMPLE),
+            (Environment.DEV, ModelTypes.SAMPLE),
+            (Environment.PROD, ModelTypes.SAMPLE),
         ],
     )
     def test_feature_engineering(
         self,
         mocker: MockerFixture,
-        env: Environments,
+        env: Environment,
         model_type: ModelTypes,
     ) -> None:
         """Test CLIArgs parses sys.argv and executes FeatureEngineeringTask.run()."""
@@ -53,14 +53,14 @@ class TestMain:
     @pytest.mark.parametrize(
         ("env", "model_type"),
         [
-            (Environments.DEV, ModelTypes.SAMPLE),
-            (Environments.PROD, ModelTypes.SAMPLE),
+            (Environment.DEV, ModelTypes.SAMPLE),
+            (Environment.PROD, ModelTypes.SAMPLE),
         ],
     )
     def test_training(
         self,
         mocker: MockerFixture,
-        env: Environments,
+        env: Environment,
         model_type: ModelTypes,
     ) -> None:
         """Test CLIArgs parses sys.argv and executes Training.run()."""
@@ -86,14 +86,14 @@ class TestMain:
     @pytest.mark.parametrize(
         ("env", "model_type"),
         [
-            (Environments.DEV, ModelTypes.SAMPLE),
-            (Environments.PROD, ModelTypes.SAMPLE),
+            (Environment.DEV, ModelTypes.SAMPLE),
+            (Environment.PROD, ModelTypes.SAMPLE),
         ],
     )
     def test_inference(
         self,
         mocker: MockerFixture,
-        env: Environments,
+        env: Environment,
         model_type: ModelTypes,
     ) -> None:
         """Test CLIArgs parses sys.argv and executes Inference.run()."""
@@ -119,14 +119,14 @@ class TestMain:
     @pytest.mark.parametrize(
         ("env", "model_type"),
         [
-            (Environments.DEV, ModelTypes.SAMPLE),
-            (Environments.PROD, ModelTypes.SAMPLE),
+            (Environment.DEV, ModelTypes.SAMPLE),
+            (Environment.PROD, ModelTypes.SAMPLE),
         ],
     )
     def test_evaluation(
         self,
         mocker: MockerFixture,
-        env: Environments,
+        env: Environment,
         model_type: ModelTypes,
     ) -> None:
         """Test CLIArgs parses sys.argv and executes Evaluation.run()."""
@@ -152,14 +152,14 @@ class TestMain:
     @pytest.mark.parametrize(
         ("env", "model_type"),
         [
-            (Environments.DEV, ModelTypes.SAMPLE),
-            (Environments.PROD, ModelTypes.SAMPLE),
+            (Environment.DEV, ModelTypes.SAMPLE),
+            (Environment.PROD, ModelTypes.SAMPLE),
         ],
     )
     def test_export(
         self,
         mocker: MockerFixture,
-        env: Environments,
+        env: Environment,
         model_type: ModelTypes,
     ) -> None:
         """Test CLIArgs parses sys.argv and executes Export.run()."""

@@ -1,11 +1,11 @@
 """Constants for the project."""
 
-from const.environments import Environments
+from const.environment import Environment
 from const.model_types import ModelTypes
 from const.tasks import Tasks
 
 __all__ = [
-    "Environments",
+    "Environment",
     "ModelTypes",
     "Tasks",
 ]

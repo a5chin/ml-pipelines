@@ -1,7 +1,7 @@
 from enum import StrEnum
 
 
-class Environments(StrEnum):
+class Environment(StrEnum):
     """Enumeration for different Environments."""
 
     DEV = "dev"

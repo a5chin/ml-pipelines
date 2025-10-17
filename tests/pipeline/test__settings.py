@@ -1,6 +1,6 @@
 import pytest
 
-from const import Environments, ModelTypes
+from const import Environment, ModelTypes
 from pipelines.settings import CLIArgs, PipelineCompileArgs
 
 
@@ -10,12 +10,12 @@ class TestArgs:
     @pytest.mark.parametrize(
         ("env", "pipeline_name", "tag", "model_type", "error"),
         [
-            (Environments.DEV, "sample-pipeline", "v1.1", ModelTypes.SAMPLE, None),
-            (Environments.PROD, "sample-pipeline", "v1.0", ModelTypes.SAMPLE, None),
+            (Environment.DEV, "sample-pipeline", "v1.1", ModelTypes.SAMPLE, None),
+            (Environment.PROD, "sample-pipeline", "v1.0", ModelTypes.SAMPLE, None),
             ("qa", "sample-pipeline", "v1.0", ModelTypes.SAMPLE, ValueError),
-            (Environments.DEV, "sample-pipeline", 1.0, ModelTypes.SAMPLE, ValueError),
+            (Environment.DEV, "sample-pipeline", 1.0, ModelTypes.SAMPLE, ValueError),
             (
-                Environments.PROD,
+                Environment.PROD,
                 "sample-pipeline",
                 "v1.0",
                 "example-pipeline",
@@ -25,7 +25,7 @@ class TestArgs:
     )
     def test_cli_args(
         self,
-        env: Environments,
+        env: Environment,
         pipeline_name: str,
         tag: str,
         model_type: ModelTypes,
@@ -59,7 +59,7 @@ class TestArgs:
         ),
         [
             (
-                Environments.DEV,
+                Environment.DEV,
                 "pipeline-name",
                 "v1.0",
                 ModelTypes.SAMPLE,
@@ -77,7 +77,7 @@ class TestArgs:
     )
     def test_pipeline_compile_args(
         self,
-        env: Environments,
+        env: Environment,
         pipeline_name: str,
         tag: str,
         model_type: ModelTypes,

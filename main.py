@@ -1,6 +1,6 @@
 from pydantic_settings import BaseSettings
 
-from const import Environments, ModelTypes, Tasks
+from const import Environment, ModelTypes, Tasks
 from tasks import (
     BaseTask,
     EvaluationTask,
@@ -14,7 +14,7 @@ from tasks import (
 class CLIArgs(BaseSettings, cli_parse_args=True):
     """CLI Arguments."""
 
-    env: Environments = Environments.DEV
+    env: Environment = Environment.DEV
     model_type: ModelTypes = ModelTypes.SAMPLE
     task: Tasks = Tasks.FEATUREENGINEERING
 
