@@ -1,10 +1,10 @@
 from enum import StrEnum
 
 
-class Tasks(StrEnum):
+class Task(StrEnum):
     """Enumeration for different Tasks."""
 
-    FEATUREENGINEERING = "feature-engineering"
+    FEATURE_ENGINEERING = "feature_engineering"
     TRAING = "training"
     EVALUATION = "evaluation"
     INFERENCE = "inference"

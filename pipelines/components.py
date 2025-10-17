@@ -1,6 +1,6 @@
 from kfp.dsl import ContainerSpec, container_component
 
-from const import Tasks
+from const import Task
 
 
 @container_component
@@ -14,7 +14,7 @@ def feature_engineering(
         command=["uv", "run", "main.py"],
         args=[
             "--task",
-            Tasks.FEATUREENGINEERING,
+            Task.FEATURE_ENGINEERING,
             "--model_type",
             model_type,
         ],
@@ -32,7 +32,7 @@ def training(
         command=["uv", "run", "main.py"],
         args=[
             "--task",
-            Tasks.TRAING,
+            Task.TRAING,
             "--model_type",
             model_type,
         ],
@@ -50,7 +50,7 @@ def evaluation(
         command=["uv", "run", "main.py"],
         args=[
             "--task",
-            Tasks.EVALUATION,
+            Task.EVALUATION,
             "--model_type",
             model_type,
         ],
@@ -68,7 +68,7 @@ def inference(
         command=["uv", "run", "main.py"],
         args=[
             "--task",
-            Tasks.INFERENCE,
+            Task.INFERENCE,
             "--model_type",
             model_type,
         ],
@@ -86,7 +86,7 @@ def export(
         command=["uv", "run", "main.py"],
         args=[
             "--task",
-            Tasks.EXPORT,
+            Task.EXPORT,
             "--model_type",
             model_type,
         ],

@@ -1,6 +1,6 @@
 from pydantic_settings import BaseSettings
 
-from const import Environment, ModelType, Tasks
+from const import Environment, ModelType, Task
 from tasks import (
     BaseTask,
     EvaluationTask,
@@ -16,16 +16,16 @@ class CLIArgs(BaseSettings, cli_parse_args=True):
 
     env: Environment = Environment.DEV
     model_type: ModelType = ModelType.SAMPLE
-    task: Tasks = Tasks.FEATUREENGINEERING
+    task: Task = Task.FEATURE_ENGINEERING
 
 
-task_maps: dict[ModelType, dict[Tasks, type[BaseTask]]] = {
+task_maps: dict[ModelType, dict[Task, type[BaseTask]]] = {
     ModelType.SAMPLE: {
-        Tasks.FEATUREENGINEERING: FeatureEngineeringTask,
-        Tasks.TRAING: TrainingTask,
-        Tasks.EVALUATION: EvaluationTask,
-        Tasks.INFERENCE: InferenceTask,
-        Tasks.EXPORT: ExportTask,
+        Task.FEATURE_ENGINEERING: FeatureEngineeringTask,
+        Task.TRAING: TrainingTask,
+        Task.EVALUATION: EvaluationTask,
+        Task.INFERENCE: InferenceTask,
+        Task.EXPORT: ExportTask,
     }
 }
 

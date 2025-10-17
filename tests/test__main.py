@@ -4,7 +4,7 @@ import pytest
 from pytest_mock import MockerFixture  # noqa: TC002
 
 import main
-from const import Environment, ModelType, Tasks
+from const import Environment, ModelType, Task
 from tasks import (
     EvaluationTask,
     ExportTask,
@@ -41,7 +41,7 @@ class TestMain:
                 "--model_type",
                 model_type,
                 "--task",
-                Tasks.FEATUREENGINEERING,
+                Task.FEATURE_ENGINEERING,
             ],
         )
         mock_run = mocker.patch.object(FeatureEngineeringTask, "run", return_value=None)
@@ -74,7 +74,7 @@ class TestMain:
                 "--model_type",
                 model_type,
                 "--task",
-                Tasks.TRAING,
+                Task.TRAING,
             ],
         )
         mock_run = mocker.patch.object(TrainingTask, "run", return_value=None)
@@ -107,7 +107,7 @@ class TestMain:
                 "--model_type",
                 model_type,
                 "--task",
-                Tasks.INFERENCE,
+                Task.INFERENCE,
             ],
         )
         mock_run = mocker.patch.object(InferenceTask, "run", return_value=None)
@@ -140,7 +140,7 @@ class TestMain:
                 "--model_type",
                 model_type,
                 "--task",
-                Tasks.EVALUATION,
+                Task.EVALUATION,
             ],
         )
         mock_run = mocker.patch.object(EvaluationTask, "run", return_value=None)
@@ -173,7 +173,7 @@ class TestMain:
                 "--model_type",
                 model_type,
                 "--task",
-                Tasks.EXPORT,
+                Task.EXPORT,
             ],
         )
         mock_run = mocker.patch.object(ExportTask, "run", return_value=None)
