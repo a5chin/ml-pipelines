@@ -2,4 +2,4 @@ from pydantic import BaseModel
 
 
 class EvaluationSettings(BaseModel):
-    """Settings for Evaluation Tasks."""
+    """Settings for Evaluation Task."""

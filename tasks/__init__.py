@@ -1,4 +1,4 @@
-"""Tasks Module."""
+"""Task Module."""
 
 from tasks.base import BaseTask
 from tasks.evaluation.run import EvaluationTask

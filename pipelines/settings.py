@@ -1,17 +1,17 @@
 from pydantic import BaseModel, PositiveFloat, PositiveInt
 from pydantic_settings import BaseSettings
 
-from const import Environments, ModelTypes  # noqa: TC001
+from const import Environment, ModelType  # noqa: TC001
 from environments.settings import load_env_settings
 
 
 class CLIArgs(BaseSettings):
     """CLI Arguments."""
 
-    env: Environments
+    env: Environment
     pipeline_name: str
     tag: str
-    model_type: ModelTypes
+    model_type: ModelType
 
 
 class PipelineCompileArgs(BaseModel):
@@ -23,22 +23,22 @@ class PipelineCompileArgs(BaseModel):
     image: str
     pipeline_template_host: str
     tag: str = "latest"
-    model_type: ModelTypes
+    model_type: ModelType
     num_retries: PositiveInt = 3
     backoff_duration: str = "60s"
     backoff_factor: PositiveFloat = 2.0
 
     @classmethod
     def build(
-        cls, env: Environments, pipeline_name: str, tag: str, model_type: ModelTypes
+        cls, env: Environment, pipeline_name: str, tag: str, model_type: ModelType
     ) -> PipelineCompileArgs:
         """Args for building PipelineCompileArgs.
 
         Args:
-            env (Environments): Environment
+            env (Environment): Environment
             pipeline_name (str): Pipeline name
             tag (str): Tag for the image
-            model_type (ModelTypes): Model type
+            model_type (ModelType): Model type
 
         Returns:
             PipelineCompileArgs: PipelineCompileArgs

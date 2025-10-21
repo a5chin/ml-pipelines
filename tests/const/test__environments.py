@@ -1,6 +1,6 @@
 import pytest
 
-from const import Environments
+from const import Environment
 from environments.settings import EnvironmentSettings, load_env_settings
 
 
@@ -10,11 +10,11 @@ class TestEnvironments:
     @pytest.mark.parametrize(
         ("env", "expected"),
         [
-            (Environments.DEV, "dev"),
-            (Environments.PROD, "prod"),
+            (Environment.DEV, "dev"),
+            (Environment.PROD, "prod"),
         ],
     )
-    def test_const(self, env: Environments, expected: str) -> None:
+    def test_const(self, env: Environment, expected: str) -> None:
         """Test All Environments."""
         if env != expected:
             pytest.fail(f"Expected '{expected}', but got '{env}'")
@@ -23,13 +23,13 @@ class TestEnvironments:
         ("env", "expected"),
         [
             (
-                Environments.DEV,
+                Environment.DEV,
                 EnvironmentSettings(
                     project_id="your-dev-project-id", location="us-central1"
                 ),
             ),
             (
-                Environments.PROD,
+                Environment.PROD,
                 EnvironmentSettings(
                     project_id="your-prod-project-id", location="us-central1"
                 ),
@@ -37,7 +37,7 @@ class TestEnvironments:
         ],
     )
     def test_load_env_settings(
-        self, env: Environments, expected: EnvironmentSettings
+        self, env: Environment, expected: EnvironmentSettings
     ) -> None:
         """Test load_env_settings function."""
         settings = load_env_settings(env)

@@ -3,6 +3,6 @@ from pydantic.types import PositiveInt  # noqa: TC002
 
 
 class TrainingSettings(BaseModel):
-    """Settings for Training Tasks."""
+    """Settings for Training Task."""
 
     seed: PositiveInt = 42
