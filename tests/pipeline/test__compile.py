@@ -7,8 +7,7 @@ from const import Environment, ModelType
 from pipelines import main
 
 if TYPE_CHECKING:
-    from unittest.mock import MagicMock
-
+    from kfp.registry import RegistryClient
     from pytest_mock import MockerFixture
 
 
@@ -41,7 +40,7 @@ class TestCompilePipeline:
     def test_compile_pipeline(  # noqa: PLR0913
         self,
         mocker: MockerFixture,
-        registry_client: MagicMock,
+        registry_client: RegistryClient,
         env: Environment,
         pipeline_name: str,
         tag: str,
