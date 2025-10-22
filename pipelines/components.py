@@ -6,6 +6,7 @@ from const import Task
 @container_component
 def feature_engineering(
     image: str,
+    execution_date: str,
     model_type: str,
 ) -> ContainerSpec:
     """Feature Engineering component."""
@@ -13,6 +14,8 @@ def feature_engineering(
         image=str(image),
         command=["uv", "run", "main.py"],
         args=[
+            "--execution_date",
+            execution_date,
             "--task",
             Task.FEATURE_ENGINEERING,
             "--model_type",
@@ -24,6 +27,7 @@ def feature_engineering(
 @container_component
 def training(
     image: str,
+    execution_date: str,
     model_type: str,
 ) -> ContainerSpec:
     """Training component."""
@@ -31,8 +35,10 @@ def training(
         image=image,
         command=["uv", "run", "main.py"],
         args=[
+            "--execution_date",
+            execution_date,
             "--task",
-            Task.TRAING,
+            Task.TRAINING,
             "--model_type",
             model_type,
         ],
@@ -42,6 +48,7 @@ def training(
 @container_component
 def evaluation(
     image: str,
+    execution_date: str,
     model_type: str,
 ) -> ContainerSpec:
     """Evaluate component."""
@@ -49,6 +56,8 @@ def evaluation(
         image=image,
         command=["uv", "run", "main.py"],
         args=[
+            "--execution_date",
+            execution_date,
             "--task",
             Task.EVALUATION,
             "--model_type",
@@ -60,6 +69,7 @@ def evaluation(
 @container_component
 def inference(
     image: str,
+    execution_date: str,
     model_type: str,
 ) -> ContainerSpec:
     """Inference component."""
@@ -67,6 +77,8 @@ def inference(
         image=image,
         command=["uv", "run", "main.py"],
         args=[
+            "--execution_date",
+            execution_date,
             "--task",
             Task.INFERENCE,
             "--model_type",
@@ -78,6 +90,7 @@ def inference(
 @container_component
 def export(
     image: str,
+    execution_date: str,
     model_type: str,
 ) -> ContainerSpec:
     """Export component."""
@@ -85,6 +98,8 @@ def export(
         image=image,
         command=["uv", "run", "main.py"],
         args=[
+            "--execution_date",
+            execution_date,
             "--task",
             Task.EXPORT,
             "--model_type",
