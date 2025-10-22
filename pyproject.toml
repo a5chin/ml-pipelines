@@ -12,7 +12,7 @@ license = { file = "LICENSE" }
 
 dependencies = [
     "kfp>=2.14.6",
-    "pydantic>=2.12.1",
+    "pydantic>=2.12.3",
     "pydantic-settings>=2.11.0",
 ]
 
@@ -30,7 +30,7 @@ dev = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["ml-pipelines"]
+packages = ["const", "enviroments", "pipelines", "tasks"]
 
 [build-system]
 requires = ["hatchling"]

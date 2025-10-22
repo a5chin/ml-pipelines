@@ -42,7 +42,7 @@ class TestArgs:
             return
 
         with pytest.raises(error):
-            CLIArgs(
+            _ = CLIArgs(
                 env=env,
                 pipeline_name=pipeline_name,
                 tag=tag,

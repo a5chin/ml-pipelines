@@ -22,7 +22,7 @@ class CLIArgs(BaseSettings, cli_parse_args=True):
 task_maps: dict[ModelType, dict[Task, type[BaseTask]]] = {
     ModelType.SAMPLE: {
         Task.FEATURE_ENGINEERING: FeatureEngineeringTask,
-        Task.TRAING: TrainingTask,
+        Task.TRAINING: TrainingTask,
         Task.EVALUATION: EvaluationTask,
         Task.INFERENCE: InferenceTask,
         Task.EXPORT: ExportTask,

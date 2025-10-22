@@ -1,14 +1,19 @@
 import tempfile
 from logging import getLogger
 from pathlib import Path
+from typing import TYPE_CHECKING
 
 from kfp import compiler
-from kfp.dsl import base_component  # noqa: TC002
 from kfp.registry import RegistryClient
 
 from const import ModelType
+from pipelines.graphs import sample
 from pipelines.settings import CLIArgs, PipelineCompileArgs
-from pipelines.types import sample
+
+if TYPE_CHECKING:
+    from collections.abc import Callable
+
+    from kfp.dsl.graph_component import GraphComponent
 
 logger = getLogger(__name__)
 
@@ -18,12 +23,14 @@ pipeline_types = {
 
 
 def compile_and_upload_pipeline(
-    pipeline_func: base_component.BaseComponent, args: PipelineCompileArgs
+    pipeline_func: Callable[[PipelineCompileArgs], GraphComponent],
+    args: PipelineCompileArgs,
 ) -> None:
     """Compile and upload the pipeline.
 
     Args:
-        pipeline_func (Callable): Pipeline function.
+        pipeline_func (Callable[[PipelineCompileArgs], GraphComponent]):
+            Pipeline function.
         args (PipelineCompileArgs): Arguments for pipeline compilation.
 
     """
@@ -33,7 +40,7 @@ def compile_and_upload_pipeline(
         package_path = (Path(td) / f"{args.pipeline_name}.yaml").as_posix()
 
         compiler.Compiler().compile(
-            pipeline_func=pipeline_func,
+            pipeline_func=pipeline_func(args),
             package_path=package_path,
         )
 
@@ -62,10 +69,10 @@ def main() -> None:
         model_type=cli_args.model_type,
     )
 
-    pipeline_func = pipeline_types[cli_args.model_type](args)
+    pipeline_func = pipeline_types[cli_args.model_type]
 
     compile_and_upload_pipeline(pipeline_func, args)
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     main()

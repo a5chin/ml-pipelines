@@ -1,7 +1,7 @@
 import sys
+from typing import TYPE_CHECKING
 
 import pytest
-from pytest_mock import MockerFixture  # noqa: TC002
 
 import main
 from const import Environment, ModelType, Task
@@ -12,6 +12,9 @@ from tasks import (
     InferenceTask,
     TrainingTask,
 )
+
+if TYPE_CHECKING:
+    from pytest_mock import MockerFixture
 
 
 class TestMain:
@@ -74,7 +77,7 @@ class TestMain:
                 "--model_type",
                 model_type,
                 "--task",
-                Task.TRAING,
+                Task.TRAINING,
             ],
         )
         mock_run = mocker.patch.object(TrainingTask, "run", return_value=None)

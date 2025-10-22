@@ -3,16 +3,20 @@ from typing import Any
 import nox
 from pydantic_settings import BaseSettings
 
+from const import Environment, ModelType
 
-class CLIArgs(
-    BaseSettings,
-    cli_ignore_unknown_args=True,
-):
+
+class CLIArgs(BaseSettings, cli_parse_args=True, cli_ignore_unknown_args=True):
     """CLIArgs is a class that extends BaseSettings to handle command line arguments."""
 
     junitxml: str = ""
     pyright: bool = False
     ruff: bool = False
+
+    env: Environment = Environment.DEV
+    pipeline_name: str = "sample-pipeline"
+    tag: str = "test"
+    model_type: ModelType = ModelType.SAMPLE
 
     @classmethod
     def parse(cls, posargs: list[str]) -> CLIArgs:
@@ -96,3 +100,40 @@ def test(session: nox.Session) -> None:
     session.run(*command)
 
     session.log("✅ Testing completed successfully.")
+
+
+@nox.session(python=False)
+def compile_pipeline(session: nox.Session) -> None:
+    """Run Compile Pipeline.
+
+    Args:
+        session (nox.Session): The Nox session object.
+
+    Examples:
+        >>> uv run -m nox -s compile_pipeline -- \
+        >>> --env dev \
+        >>> --pipeline_name sample-pipeline \
+        >>> --tag test \
+        >>> --model_type sample
+
+    """
+    args = CLIArgs.parse(session.posargs)
+
+    command = [
+        "uv",
+        "run",
+        "-m",
+        "pipelines.main",
+        "--env",
+        args.env,
+        "--pipeline_name",
+        args.pipeline_name,
+        "--tag",
+        args.tag,
+        "--model_type",
+        args.model_type,
+    ]
+
+    session.run(*command)
+
+    session.log(f"✅ Compile {args.env}-{args.pipeline_name} completed successfully.")

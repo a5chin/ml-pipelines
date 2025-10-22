@@ -5,7 +5,7 @@ from const import Environment, ModelType  # noqa: TC001
 from environments.settings import load_env_settings
 
 
-class CLIArgs(BaseSettings):
+class CLIArgs(BaseSettings, cli_parse_args=True, cli_ignore_unknown_args=True):
     """CLI Arguments."""
 
     env: Environment
@@ -23,7 +23,7 @@ class PipelineCompileArgs(BaseModel):
     image: str
     pipeline_template_host: str
     tag: str = "latest"
-    model_type: ModelType
+    model_type: str
     num_retries: PositiveInt = 3
     backoff_duration: str = "60s"
     backoff_factor: PositiveFloat = 2.0
