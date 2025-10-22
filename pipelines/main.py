@@ -74,5 +74,5 @@ def main() -> None:
     compile_and_upload_pipeline(pipeline_func, args)
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     main()

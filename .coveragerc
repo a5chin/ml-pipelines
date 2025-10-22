@@ -2,7 +2,4 @@
 omit =
     **/__init__.py
     noxfile.py
-    pipelines/types/*
-    pipelines/components.py
-    pipelines/main.py
     tests/*
