@@ -1,8 +1,10 @@
 import importlib
+from typing import TYPE_CHECKING
 
 from pydantic import BaseModel
 
-from const import Environment  # noqa: TC001
+if TYPE_CHECKING:
+    from const import Environment
 
 
 class EnvironmentSettings(BaseModel):
