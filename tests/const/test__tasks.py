@@ -10,7 +10,7 @@ class TestTasks:
         ("task", "expected"),
         [
             (Task.FEATURE_ENGINEERING, "feature_engineering"),
-            (Task.TRAING, "training"),
+            (Task.TRAINING, "training"),
             (Task.EVALUATION, "evaluation"),
             (Task.INFERENCE, "inference"),
             (Task.EXPORT, "export"),
