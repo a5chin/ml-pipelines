@@ -74,7 +74,7 @@ class TestMain:
                 "--model_type",
                 model_type,
                 "--task",
-                Task.TRAING,
+                Task.TRAINING,
             ],
         )
         mock_run = mocker.patch.object(TrainingTask, "run", return_value=None)
