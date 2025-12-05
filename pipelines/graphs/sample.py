@@ -21,7 +21,7 @@ def get_pipeline(args: PipelineCompileArgs) -> GraphComponent:
     """Get sample pipeline.
 
     Args:
-        args (PipelineCompileArgs): Pipeline argments for compilation.
+        args (PipelineCompileArgs): Pipeline arguments for compilation.
 
     Returns:
         GraphComponent: Pipeline Graph Component.
