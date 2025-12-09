@@ -27,6 +27,7 @@
         "htmlcov",
         "ipynb",
         "ipython",
+        "jaxtyping",
         "junitxml",
         "kevinrose",
         "kubeflow",

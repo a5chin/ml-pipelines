@@ -11,6 +11,7 @@ readme = "README.md"
 license = { file = "LICENSE" }
 
 dependencies = [
+    "jaxtyping>=0.3.3",
     "kfp>=2.14.6",
     "pydantic>=2.12.3",
     "pydantic-settings>=2.11.0",
