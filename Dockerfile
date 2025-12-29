@@ -11,6 +11,7 @@ WORKDIR /app
 
 COPY --from=uv /uv /uvx /bin/
 COPY pyproject.toml uv.lock ./
+COPY tasks tasks
 
 ENV PYTHONDONTWRITEBYTECODE=True \
     PYTHONUNBUFFERED=True \
