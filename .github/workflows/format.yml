@@ -39,7 +39,7 @@ jobs:
         uses: ./.github/actions/setup-python-with-uv
 
       - name: Format by Ruff
-        run: uv run nox -s fmt --ruff
+        run: uv run nox -s fmt -- --ruff
 
   sqlfluff:
     runs-on: ubuntu-latest
