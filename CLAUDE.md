@@ -19,10 +19,12 @@ This is a Kubeflow Pipelines (KFP) template for ML workflows built with Python, 
 - Coverage requirements: minimum 75% branch coverage (configured in pytest.ini)
 
 ### Code Quality
-- Format code: `uv run nox -s fmt`
-- Lint with both tools: `uv run nox -s lint -- --pyright --ruff`
+- Format code (Ruff): `uv run nox -s fmt -- --ruff`
+- Format SQL (SQLFluff): `uv run nox -s fmt -- --sqlfluff`
+- Lint with all tools: `uv run nox -s lint -- --pyright --ruff --sqlfluff`
 - Lint with Pyright only: `uv run nox -s lint -- --pyright`
 - Lint with Ruff only: `uv run nox -s lint -- --ruff`
+- Lint with SQLFluff only: `uv run nox -s lint -- --sqlfluff`
 
 ### Pipeline Compilation
 Compile and upload a pipeline to Kubeflow:
