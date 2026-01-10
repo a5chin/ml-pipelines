@@ -12,6 +12,7 @@ class CLIArgs(BaseSettings, cli_parse_args=True, cli_ignore_unknown_args=True):
     junitxml: str = ""
     pyright: bool = False
     ruff: bool = False
+    sqlfluff: bool = False
 
     env: Environment = Environment.DEV
     pipeline_name: str = "sample-pipeline"
@@ -51,12 +52,17 @@ def fmt(session: nox.Session) -> None:
         session (nox.Session): The Nox session object.
 
     Examples:
-        >>> uv run nox -s fmt
+        >>> uv run nox -s fmt -- --ruff --sqlfluff
 
     """
-    session.run("uv", "run", "ruff", "format", ".")
+    args = CLIArgs.parse(session.posargs)
 
-    session.log("✅ Formatting completed successfully.")
+    if args.ruff:
+        session.run("uv", "run", "ruff", "format", ".")
+        session.log("✅ Ruff formatting completed successfully.")
+    if args.sqlfluff:
+        session.run("uv", "run", "sqlfluff", "fix", ".")
+        session.log("✅ SQLFluff formatting completed successfully.")
 
 
 @nox.session(python=False)
@@ -67,7 +73,7 @@ def lint(session: nox.Session) -> None:
         session (nox.Session): The Nox session object.
 
     Examples:
-        >>> uv run nox -s lint -- --pyright --ruff
+        >>> uv run nox -s lint -- --pyright --ruff --sqlfluff
 
     """
     args = CLIArgs.parse(session.posargs)
@@ -78,6 +84,9 @@ def lint(session: nox.Session) -> None:
     if args.ruff:
         session.run("uv", "run", "ruff", "check", ".", "--fix")
         session.log("✅ Ruff linting completed successfully.")
+    if args.sqlfluff:
+        session.run("uv", "run", "sqlfluff", "lint", ".")
+        session.log("✅ SQLFluff linting completed successfully.")
 
 
 @nox.session(python=False)

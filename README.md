@@ -44,6 +44,7 @@ It provides a structured, scalable architecture for ML pipelines with containeri
 - 🌍 **Environment Management**: Multi-environment support (dev, prod) with isolated configurations
 - ⚡ **Modern Python Tooling**: Built with [uv](https://github.com/astral-sh/uv) and [Ruff](https://github.com/astral-sh/ruff)
 - 🔒 **Type Safety**: Full type hints with Pyright and Pydantic validation
+- 📝 **SQL Linting**: Automated SQL quality checks with [SQLFluff](https://github.com/sqlfluff/sqlfluff) for BigQuery
 - 🚀 **CI/CD Ready**: GitHub Actions workflows for testing, linting, and Docker builds
 
 ## 📦 Prerequisites
@@ -116,13 +117,15 @@ uv run nox -s compile_pipeline -- \
 ├── noxfile.py                      # Task automation with Nox
 ├── pyproject.toml                  # Project dependencies & metadata
 ├── pytest.ini                      # Pytest configuration
-└── ruff.toml                       # Ruff linter configuration
+├── ruff.toml                       # Ruff linter configuration
+└── .sqlfluff                       # SQLFluff SQL linter configuration
 ```
 
 **Key Files**:
 - [`main.py`](./main.py) - Entry point for task execution in containers
 - [`noxfile.py`](./noxfile.py) - Development task automation (test, lint, fmt, compile_pipeline)
 - [`pyproject.toml`](./pyproject.toml) - Project configuration and dependencies
+- [`.sqlfluff`](./.sqlfluff) - SQL linter configuration (BigQuery dialect)
 - [`CLAUDE.md`](./CLAUDE.md) - Architecture guide for Claude Code
 
 ## 🛠️ Development Commands
@@ -141,15 +144,22 @@ uv run nox -s test -- --junitxml=results.xml
 
 ### ✅ Code Quality
 ```bash
-# Format code
-uv run nox -s fmt
+# Format code (Python)
+uv run nox -s fmt -- --ruff
+
+# Format SQL files
+uv run nox -s fmt -- --sqlfluff
+
+# Format all
+uv run nox -s fmt -- --ruff --sqlfluff
 
 # Run all linters
-uv run nox -s lint -- --pyright --ruff
+uv run nox -s lint -- --pyright --ruff --sqlfluff
 
 # Run individual linters
-uv run nox -s lint -- --pyright
-uv run nox -s lint -- --ruff
+uv run nox -s lint -- --pyright  # Type checking
+uv run nox -s lint -- --ruff     # Python linting
+uv run nox -s lint -- --sqlfluff # SQL linting
 ```
 
 ### 🔧 Pipeline Development
@@ -315,6 +325,7 @@ uv run nox -s compile_pipeline -- \
 - 📘 [Kubeflow Pipelines v2](https://www.kubeflow.org/docs/components/pipelines/v2/) - KFP documentation
 - 📦 [uv Documentation](https://docs.astral.sh/uv/) - Python package manager
 - 🔍 [Ruff Documentation](https://docs.astral.sh/ruff/) - Linter and formatter
+- 📝 [SQLFluff Documentation](https://docs.sqlfluff.com/) - SQL linter and formatter
 - ✅ [Pyright](https://microsoft.github.io/pyright/) - Static type checker
 - 🧪 [Pytest](https://docs.pytest.org/) - Testing framework
 - 🔧 [Nox](https://nox.thea.codes/) - Task automation tool
@@ -377,6 +388,7 @@ We welcome contributions! Please follow these steps:
 
 - ✅ Maintain **75%+ test coverage** (enforced by pytest)
 - 🎨 Follow **Ruff** formatting and linting rules ([`ruff.toml`](./ruff.toml))
+- 📝 Follow **SQLFluff** SQL formatting rules ([`.sqlfluff`](./.sqlfluff))
 - 🔍 Pass **Pyright** type checking ([`pyrightconfig.json`](./pyrightconfig.json))
 - 📝 Write **clear commit messages**
 - 🧪 Add **tests** for new features
