@@ -9,6 +9,7 @@ on:
       - ".github/workflows/publish.yml"
       - ".python-version"
       - "Dockerfile"
+      - "tasks/**"
 
   workflow_dispatch:
 
