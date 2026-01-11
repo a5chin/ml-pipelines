@@ -69,6 +69,7 @@ repos:
         name: SQLFluff Lint
         description: "Lints sql files with `SQLFluff`"
         types: [sql]
+
       - id: sqlfluff-fix
         name: SQLFluff Fix
         description: "Fixes sql lint errors with `SQLFluff`"
