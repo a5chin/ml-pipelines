@@ -4,8 +4,9 @@
 
 [![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+[![ty](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ty/main/assets/badge/v0.json)](https://github.com/astral-sh/ty)
 
-[![Versions](https://img.shields.io/badge/python-3.10%20|%203.11%20|%203.12%20|%203.13%20|%203.14%20-green.svg)](https://www.python.org/downloads/)
+[![Versions](https://img.shields.io/badge/python-3.11%20|%203.12%20|%203.13%20|%203.14%20-green.svg)](https://www.python.org/downloads/)
 ![code coverage](https://raw.githubusercontent.com/a5chin/ml-pipelines/coverage-badge/coverage.svg?raw=true)
 
 [![Docker](https://github.com/a5chin/ml-pipelines/actions/workflows/docker.yml/badge.svg)](https://github.com/a5chin/ml-pipelines/actions/workflows/docker.yml)
@@ -43,7 +44,7 @@ It provides a structured, scalable architecture for ML pipelines with containeri
 - 🧩 **Task-Based Architecture**: Modular ML tasks (feature engineering, training, evaluation, inference, export)
 - 🌍 **Environment Management**: Multi-environment support (dev, prod) with isolated configurations
 - ⚡ **Modern Python Tooling**: Built with [uv](https://github.com/astral-sh/uv) and [Ruff](https://github.com/astral-sh/ruff)
-- 🔒 **Type Safety**: Full type hints with Pyright and Pydantic validation
+- 🔒 **Type Safety**: Full type hints with ty and Pydantic validation
 - 📝 **SQL Linting**: Automated SQL quality checks with [SQLFluff](https://github.com/sqlfluff/sqlfluff) for BigQuery
 - 🚀 **CI/CD Ready**: GitHub Actions workflows for testing, linting, and Docker builds
 
@@ -154,12 +155,12 @@ uv run nox -s fmt -- --sqlfluff
 uv run nox -s fmt -- --ruff --sqlfluff
 
 # Run all linters
-uv run nox -s lint -- --pyright --ruff --sqlfluff
+uv run nox -s lint -- --ruff --sqlfluff --ty
 
 # Run individual linters
-uv run nox -s lint -- --pyright  # Type checking
 uv run nox -s lint -- --ruff     # Python linting
 uv run nox -s lint -- --sqlfluff # SQL linting
+uv run nox -s lint -- --ty       # Type checking
 ```
 
 ### 🔧 Pipeline Development
@@ -326,7 +327,7 @@ uv run nox -s compile_pipeline -- \
 - 📦 [uv Documentation](https://docs.astral.sh/uv/) - Python package manager
 - 🔍 [Ruff Documentation](https://docs.astral.sh/ruff/) - Linter and formatter
 - 📝 [SQLFluff Documentation](https://docs.sqlfluff.com/) - SQL linter and formatter
-- ✅ [Pyright](https://microsoft.github.io/pyright/) - Static type checker
+- ✅ [ty](https://github.com/astral-sh/ty) - Static type checker
 - 🧪 [Pytest](https://docs.pytest.org/) - Testing framework
 - 🔧 [Nox](https://nox.thea.codes/) - Task automation tool
 
@@ -368,7 +369,7 @@ We welcome contributions! Please follow these steps:
    ```
 7. 🔍 **Lint** code:
    ```bash
-   uv run nox -s lint -- --pyright --ruff
+   uv run nox -s lint -- --ruff --ty
    ```
 8. ✅ **Test** changes:
    ```bash
@@ -389,7 +390,7 @@ We welcome contributions! Please follow these steps:
 - ✅ Maintain **75%+ test coverage** (enforced by pytest)
 - 🎨 Follow **Ruff** formatting and linting rules ([`ruff.toml`](./ruff.toml))
 - 📝 Follow **SQLFluff** SQL formatting rules ([`.sqlfluff`](./.sqlfluff))
-- 🔍 Pass **Pyright** type checking ([`pyrightconfig.json`](./pyrightconfig.json))
+- 🔍 Pass **ty** type checking ([`ty.toml`](./ty.toml))
 - 📝 Write **clear commit messages**
 - 🧪 Add **tests** for new features
 - 📚 Update **documentation** as needed
