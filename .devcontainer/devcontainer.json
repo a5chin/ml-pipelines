@@ -12,6 +12,7 @@
     "customizations": {
         "vscode": {
             "extensions": [
+                "astral-sh.ty",
                 "charliermarsh.ruff",
                 "dorzey.vscode-sqlfluff",
                 "exiasr.hadolint",
@@ -19,7 +20,6 @@
                 "mosapride.zenkaku",
                 "ms-azuretools.vscode-docker",
                 "ms-python.python",
-                "ms-python.vscode-pylance",
                 "njpwerner.autodocstring",
                 "redhat.vscode-yaml",
                 "shardulm94.trailing-spaces",

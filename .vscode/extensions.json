@@ -1,5 +1,6 @@
 {
     "recommendations": [
+        "astral-sh.ty",
         "charliermarsh.ruff",
         "codezombiech.gitignore",
         "dorzey.vscode-sqlfluff",
