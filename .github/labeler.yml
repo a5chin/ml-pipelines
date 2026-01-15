@@ -1,9 +1,6 @@
 documentation:
   - changed-files:
-      - any-glob-to-any-file:
-          - "docs/**"
-          - "README.md"
-          - "CONTRIBUTING.md"
+      - any-glob-to-any-file: "**/*.md"
 
 feature:
   - head-branch: ["^feature/"]
@@ -13,6 +10,9 @@ fix:
 
 hotfix:
   - head-branch: ["^hotfix/"]
+
+refactor:
+  - head-branch: ["^refactor/"]
 
 release:
   - head-branch: ["^release/"]

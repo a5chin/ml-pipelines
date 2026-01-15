@@ -28,7 +28,11 @@ def get_pipeline(args: PipelineCompileArgs) -> GraphComponent:
 
     """
 
-    @dsl.pipeline(name=args.pipeline_name)
+    @dsl.pipeline(  # ty: ignore[possibly-missing-attribute]
+        name=args.pipeline_name,
+        description="Sample Pipeline.",
+        display_name=args.pipeline_name,
+    )
     def pipeline_def(execution_date: str) -> None:
         feature_engineering_task = feature_engineering(
             image=args.image,
@@ -36,7 +40,7 @@ def get_pipeline(args: PipelineCompileArgs) -> GraphComponent:
             model_type=args.model_type,
         ).set_display_name("Feature Engineering")
 
-        training_task = (
+        training_task: PipelineTask = (
             training(
                 image=args.image,
                 execution_date=execution_date,
@@ -51,7 +55,7 @@ def get_pipeline(args: PipelineCompileArgs) -> GraphComponent:
             .set_display_name("Train Model")
         )
 
-        inference_task = (
+        inference_task: PipelineTask = (
             inference(
                 image=args.image,
                 execution_date=execution_date,
@@ -61,7 +65,7 @@ def get_pipeline(args: PipelineCompileArgs) -> GraphComponent:
             .set_display_name("Run Inference")
         )
 
-        evaluation_task = (
+        evaluation_task: PipelineTask = (
             evaluation(
                 image=args.image,
                 execution_date=execution_date,
@@ -71,7 +75,7 @@ def get_pipeline(args: PipelineCompileArgs) -> GraphComponent:
             .set_display_name("Evaluate Model")
         )
 
-        export_task = (
+        export_task: PipelineTask = (
             export(
                 image=args.image,
                 execution_date=execution_date,
@@ -89,6 +93,6 @@ def get_pipeline(args: PipelineCompileArgs) -> GraphComponent:
             export_task,
         )
         for task in tasks:
-            task.container_spec.image = "{{$.inputs.parameters['image']}}"  # type: ignore[reportOptionalMemberAccess]
+            task.container_spec.image = "{{$.inputs.parameters['image']}}"
 
-    return pipeline_def  # type: ignore[reportReturnType]
+    return pipeline_def

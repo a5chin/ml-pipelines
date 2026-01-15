@@ -9,7 +9,7 @@ class TestInference:
 
     def setup_method(self) -> None:
         """Set up BaseTask."""
-        self.task = InferenceTask()  # type:ignore[reportAbstractUsage]
+        self.task = InferenceTask()
 
     def test_settings(self) -> None:
         """Test Settings for InferenceTask."""

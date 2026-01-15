@@ -1,0 +1,6 @@
+[src]
+include = ["const", "environments", "noxfile.py", "pipelines", "tasks"]
+exclude = ["**/__pycache__", ".pytest_cache", ".ruff_cache", ".venv"]
+
+[rules]
+unresolved-import = "ignore"
