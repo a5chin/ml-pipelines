@@ -1,7 +1,7 @@
 {
     "files.insertFinalNewline": true,
     "files.trimTrailingWhitespace": true,
-    "python.defaultInterpreterPath": "/home/vscode/.venv/bin/python",
+    "python.defaultInterpreterPath": ".venv/bin/python",
     "python.languageServer": "None",
     "python.testing.autoTestDiscoverOnSaveEnabled": false,
     "python.testing.pytestEnabled": true,
@@ -9,8 +9,8 @@
         "tests"
     ],
     "python.testing.unittestEnabled": false,
-    "sqlfluff.config": "${workspaceFolder}/.sqlfluff",
-    "sqlfluff.executablePath": "/home/vscode/.venv/bin/sqlfluff",
+    "sqlfluff.config": ".sqlfluff",
+    "sqlfluff.executablePath": ".venv/bin/sqlfluff",
     "sqlfluff.format.enabled": true,
     "sqlfluff.linter.run": "onType",
     "terminal.integrated.defaultProfile.linux": "zsh",
