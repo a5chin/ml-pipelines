@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from pydantic import BaseModel, PositiveFloat, PositiveInt
 from pydantic_settings import BaseSettings
 
