@@ -9,7 +9,7 @@ class TestFeatureEngineeringTask:
 
     def setup_method(self) -> None:
         """Set up BaseTask."""
-        self.task = FeatureEngineeringTask()  # type:ignore[reportAbstractUsage]
+        self.task = FeatureEngineeringTask()
 
     def test_settings(self) -> None:
         """Test Settings for FeatureEngineeringTask."""

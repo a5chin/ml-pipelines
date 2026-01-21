@@ -9,7 +9,7 @@ class TestExportTask:
 
     def setup_method(self) -> None:
         """Set up BaseTask."""
-        self.task = ExportTask()  # type:ignore[reportAbstractUsage]
+        self.task = ExportTask()
 
     def test_settings(self) -> None:
         """Test Settings for ExportTask."""

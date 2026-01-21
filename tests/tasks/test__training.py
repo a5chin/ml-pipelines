@@ -10,7 +10,7 @@ class TestTrainingTask:
 
     def setup_method(self) -> None:
         """Set up BaseTask."""
-        self.task = TrainingTask()  # type:ignore[reportAbstractUsage]
+        self.task = TrainingTask()
 
     def test_settings(self) -> None:
         """Test Settings for TrainingTask."""

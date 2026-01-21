@@ -44,6 +44,14 @@ repos:
         name: Ruff format
         description: "Run 'ruff format' for extremely fast Python formatting"
 
+  - repo: local
+    hooks:
+      - id: ty
+        name: ty check
+        entry: uv run ty check
+        language: python
+        types: [python]
+
   - repo: https://github.com/hadolint/hadolint
     rev: v2.14.0
     hooks:
@@ -61,6 +69,7 @@ repos:
         name: SQLFluff Lint
         description: "Lints sql files with `SQLFluff`"
         types: [sql]
+
       - id: sqlfluff-fix
         name: SQLFluff Fix
         description: "Fixes sql lint errors with `SQLFluff`"
