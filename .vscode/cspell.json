@@ -64,6 +64,7 @@
         "pythonunbuffered",
         "pytype",
         "qodo",
+        "reviewdog",
         "ropeproject",
         "scrapy",
         "sdist",
