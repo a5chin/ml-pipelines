@@ -19,6 +19,10 @@ component_management:
       name: pipelines
       paths:
         - pipelines/**/*.py
+    - component_id: tasks
+      name: tasks
+      paths:
+        - tasks/**/*.py
 
 coverage:
   precision: 2
