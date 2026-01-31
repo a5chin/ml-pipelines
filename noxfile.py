@@ -11,6 +11,7 @@ from const import Environment, ModelType
 class CLIArgs(BaseSettings, cli_parse_args=True, cli_ignore_unknown_args=True):
     """CLIArgs is a class that extends BaseSettings to handle command line arguments."""
 
+    cov_report: str = ""
     junitxml: str = ""
     ruff: bool = False
     sqlfluff: bool = False
@@ -99,12 +100,14 @@ def test(session: nox.Session) -> None:
         session (nox.Session): The Nox session object.
 
     Examples:
-        >>> uv run nox -s test
+        >>> uv run nox -s test -- --cov_report xml --junitxml junit.xml
 
     """
     args = CLIArgs.parse(session.posargs)
 
-    command = ["uv", "run", "pytest"]
+    command = ["uv", "run", "pytest", "--cov", "--cov-branch"]
+    if args.cov_report:
+        command.append(f"--cov-report={args.cov_report}")
     if args.junitxml:
         command.append(f"--junitxml={args.junitxml}")
 

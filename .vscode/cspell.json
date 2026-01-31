@@ -76,6 +76,7 @@
         "tamasfe",
         "testpaths",
         "timemachine",
+        "unittests",
         "usefixtures",
         "venv",
         "webassets",
