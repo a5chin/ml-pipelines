@@ -10,19 +10,19 @@ component_management:
     - component_id: const
       name: const
       paths:
-        - const/**/*.py
+        - const/**
     - component_id: environments
       name: environments
       paths:
-        - environments/**/*.py
+        - environments/**
     - component_id: pipelines
       name: pipelines
       paths:
-        - pipelines/**/*.py
+        - pipelines/**
     - component_id: tasks
       name: tasks
       paths:
-        - tasks/**/*.py
+        - tasks/**
 
 coverage:
   precision: 2
