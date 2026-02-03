@@ -1,20 +1,6 @@
 name: Test
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - ".github/actions/setup-python-with-uv/action.yml"
-      - ".github/workflows/test.yml"
-      - "**.py"
-      - ".coveragerc"
-      - ".env**"
-      - ".python-version"
-      - "tests"
-      - "pyproject.toml"
-      - "pytest.ini"
-      - "uv.lock"
-
   pull_request:
     paths:
       - ".github/actions/setup-python-with-uv/action.yml"
@@ -24,17 +10,32 @@ on:
       - ".env**"
       - ".python-version"
       - "tests"
+      - "codecov.yaml"
+      - "pyproject.toml"
+      - "pytest.ini"
+      - "uv.lock"
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/actions/setup-python-with-uv/action.yml"
+      - ".github/workflows/test.yml"
+      - "**.py"
+      - ".coveragerc"
+      - ".env**"
+      - ".python-version"
+      - "tests"
+      - "codecov.yaml"
       - "pyproject.toml"
       - "pytest.ini"
       - "uv.lock"
 
+permissions:
+  contents: read
+
 jobs:
   coverage:
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: write
-      pull-requests: write
 
     steps:
       - name: Checkout
@@ -44,26 +45,19 @@ jobs:
         uses: ./.github/actions/setup-python-with-uv
 
       - name: Run pytest
-        run: |
-          set -o pipefail
-          uv run nox -s test -- --junitxml pytest.xml | tee pytest-coverage.txt
+        run: uv run nox -s test -- --cov_report xml --junitxml junit.xml
 
-      - name: Pytest coverage comment
-        uses: MishaKav/pytest-coverage-comment@v1
+      - name: Upload test results to Codecov
+        uses: codecov/test-results-action@v1
         with:
-          pytest-coverage-path: ./pytest-coverage.txt
-          junitxml-path: ./pytest.xml
+          fail_ci_if_error: true
+          files: ./junit.xml,!./cache
+          token: ${{ secrets.CODECOV_TOKEN }}
 
-      - name: Creating coverage folder
-        run: mkdir -p coverage
-
-      - name: Coverage Badge
-        uses: tj-actions/coverage-badge-py@v2
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v5
         with:
-          output: coverage/coverage.svg
-
-      - name: Publish coverage report to coverage-badge branch
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: coverage-badge
-          folder: coverage
+          fail_ci_if_error: true
+          flags: unittests
+          files: ./coverage.xml,!./cache
+          token: ${{ secrets.CODECOV_TOKEN }}
