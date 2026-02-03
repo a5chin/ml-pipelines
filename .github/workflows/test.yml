@@ -25,8 +25,8 @@ on:
       - ".env**"
       - ".python-version"
       - "tests"
-      - "pyproject.toml"
       - "codecov.yaml"
+      - "pyproject.toml"
       - "pytest.ini"
       - "uv.lock"
 
