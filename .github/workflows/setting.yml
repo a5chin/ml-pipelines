@@ -26,31 +26,6 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.generate-token.outputs.token }}
 
-  pages:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Generate a token
-        id: generate-token
-        uses: actions/create-github-app-token@v2
-        with:
-          app-id: ${{ vars.APP_ID }}
-          private-key: ${{ secrets.APP_KEY }}
-
-      - name: Set GitHub Pages Source
-        run: |
-          gh api -X POST "repos/${{ github.repository }}/pages" \
-            -f "source[branch]=${{ env.BRANCH }}" \
-            -f "source[path]=${{ env.TARGET_PATH }}" --silent \
-          || \
-          gh api -X PUT "repos/${{ github.repository }}/pages" \
-            -f "source[branch]=${{ env.BRANCH }}" \
-            -f "source[path]=${{ env.TARGET_PATH }}"
-        env:
-          BRANCH: gh-pages
-          TARGET_PATH: /
-          GH_TOKEN: ${{ steps.generate-token.outputs.token }}
-
   protection:
     runs-on: ubuntu-latest
 
