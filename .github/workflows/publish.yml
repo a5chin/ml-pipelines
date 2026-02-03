@@ -1,11 +1,12 @@
-name: Publish App to GHCR
+name: Publish Pipeline Image to GHCR
 
 on:
   push:
     branches:
       - main
     paths:
-      - ".github/workflows/publish-app.yml"
+      - ".github/workflows/publish.yml"
+      - "tasks/**"
       - ".python-version"
       - "Dockerfile"
     tags:
@@ -14,7 +15,7 @@ on:
   workflow_dispatch:
 
 env:
-  IMAGE_NAME: ${{ github.repository }}/app
+  IMAGE_NAME: ${{ github.repository }}
   REGISTRY: ghcr.io
 
 jobs:
