@@ -54,7 +54,6 @@ jobs:
         uses: release-drafter/release-drafter@v7
         with:
           config-name: release-drafter.yml
-          disable-autolabeler: true
           name: ${{ env.VERSION }}
           publish: true
           tag: ${{ env.VERSION }}
