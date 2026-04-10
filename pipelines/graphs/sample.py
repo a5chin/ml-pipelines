@@ -1,6 +1,6 @@
 from typing import TYPE_CHECKING
 
-from kfp import dsl
+from kfp.dsl import pipeline
 
 from pipelines.components import (
     evaluation,
@@ -28,7 +28,7 @@ def get_pipeline(args: PipelineCompileArgs) -> GraphComponent:
 
     """
 
-    @dsl.pipeline(  # ty: ignore[possibly-missing-attribute]
+    @pipeline(
         name=args.pipeline_name,
         description="Sample Pipeline.",
         display_name=args.pipeline_name,
@@ -47,7 +47,7 @@ def get_pipeline(args: PipelineCompileArgs) -> GraphComponent:
                 model_type=args.model_type,
             )
             .set_retry(
-                num_retries=args.num_retries if args.num_retries else 0,
+                num_retries=args.num_retries or 0,
                 backoff_duration=args.backoff_duration,
                 backoff_factor=args.backoff_factor,
             )

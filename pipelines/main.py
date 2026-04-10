@@ -61,7 +61,7 @@ def compile_and_upload_pipeline(
 
 def main() -> None:
     """Compile the pipeline."""
-    cli_args = CLIArgs()  # type: ignore[reportCallIssue]
+    cli_args = CLIArgs()  # ty: ignore[missing-argument]
     args = PipelineCompileArgs.build(
         env=cli_args.env,
         pipeline_name=cli_args.pipeline_name,
