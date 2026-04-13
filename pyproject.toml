@@ -27,7 +27,7 @@ dev = [
     "pytest-cov>=7.0.0",
     "pytest-mock>=3.15.1",
     "ruff>=0.14.0",
-    "sqlfluff>=3.5.0",
+    "sqlfluff>=4.1.0",
     "ty>=0.0.11",
 ]
 
