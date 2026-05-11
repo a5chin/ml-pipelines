@@ -93,6 +93,6 @@ def get_pipeline(args: PipelineCompileArgs) -> GraphComponent:
             export_task,
         )
         for task in tasks:
-            task.container_spec.image = "{{$.inputs.parameters['image']}}"
+            task.set_container_image("{{$.inputs.parameters['image']}}")
 
     return pipeline_def
