@@ -14,7 +14,7 @@ dependencies = [
     "jaxtyping>=0.3.9",
     "kfp>=2.15.2",
     "pydantic>=2.12.3",
-    "pydantic-settings>=2.13.1",
+    "pydantic-settings>=2.14.1",
 ]
 
 [dependency-groups]
