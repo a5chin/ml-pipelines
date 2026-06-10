@@ -80,4 +80,4 @@ line-ending = "auto"
 
 [lint.per-file-ignores]
 # Ignore all directories named `tests`.
-"tests/**" = ["INP001", "S101"]
+"tests/**" = ["FBT001", "INP001", "PLR0913", "S101"]
