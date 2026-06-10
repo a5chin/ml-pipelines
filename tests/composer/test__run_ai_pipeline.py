@@ -3,8 +3,9 @@ from pathlib import Path
 from typing import TYPE_CHECKING, Any
 from unittest.mock import MagicMock, mock_open
 
+if TYPE_CHECKING:
+    from airflow.sdk.definitions.context import Context
 import pytest
-from airflow.sdk.definitions.param import ParamsDict
 
 from composer.dags.run_ai_pipeline import ModelPipelineOperator
 
@@ -75,7 +76,7 @@ class TestModelPipelineOperator:
     ) -> None:
         """Test ModelPipelineOperator.execute() with valid config."""
         config_json = json.dumps(config)
-        mocker.patch("builtins.open", mock_open(read_data=config_json))
+        mocker.patch("pathlib.Path.open", mock_open(read_data=config_json))
         mocker.patch.object(Path, "exists", return_value=True)
 
         mock_run_pipeline = mocker.patch(
@@ -91,13 +92,11 @@ class TestModelPipelineOperator:
             execution_jst=execution_jst,
         )
 
-        context = {
-            "params": ParamsDict(
-                {
-                    "debug": debug,
-                    "enable_caching": enable_caching,
-                }
-            )
+        context: Context = {
+            "params": {
+                "debug": debug,
+                "enable_caching": enable_caching,
+            }
         }
 
         result = operator.execute(context)
@@ -147,13 +146,11 @@ class TestModelPipelineOperator:
             execution_jst=execution_jst,
         )
 
-        context = {
-            "params": ParamsDict(
-                {
-                    "debug": False,
-                    "enable_caching": True,
-                }
-            )
+        context: Context = {
+            "params": {
+                "debug": False,
+                "enable_caching": True,
+            }
         }
 
         with pytest.raises(FileNotFoundError):
