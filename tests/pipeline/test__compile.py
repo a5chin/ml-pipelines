@@ -18,31 +18,27 @@ class TestCompilePipeline:
     @pytest.mark.parametrize(
         (
             "env",
-            "pipeline_name",
             "tag",
             "model_type",
         ),
         [
             (
                 Environment.DEV,
-                "pipeline-name",
                 "v1.0",
                 ModelType.SAMPLE,
             ),
             (
                 Environment.PROD,
-                "pipeline-name",
                 "v1.0",
                 ModelType.SAMPLE,
             ),
         ],
     )
-    def test_compile_pipeline(  # noqa: PLR0913
+    def test_compile_pipeline(
         self,
         mocker: MockerFixture,
         registry_client: RegistryClient,
         env: Environment,
-        pipeline_name: str,
         tag: str,
         model_type: ModelType,
     ) -> None:
@@ -54,8 +50,6 @@ class TestCompilePipeline:
                 "pipelines.main",
                 "--env",
                 env,
-                "--pipeline_name",
-                pipeline_name,
                 "--tag",
                 tag,
                 "--model_type",
