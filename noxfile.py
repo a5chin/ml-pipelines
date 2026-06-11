@@ -27,11 +27,29 @@ class CLIArgs(BaseSettings):
 
     @property
     def composer_project_id(self) -> str:
-        return {Environment.DEV: "dev", Environment.PROD: "prod"}[self.env]
+        """Get the GCP project ID for Composer based on the environment.
+
+        Returns:
+            str: The GCP project ID corresponding to the current environment.
+
+        """
+        return {
+            Environment.DEV: "dev",
+            Environment.PROD: "prod",
+        }[self.env]
 
     @property
     def composer_bucket_name(self) -> str:
-        return {Environment.DEV: "dev", Environment.PROD: "prod"}[self.env]
+        """Get the GCS bucket name for Composer based on the environment.
+
+        Returns:
+            str: The GCS bucket name corresponding to the current environment.
+
+        """
+        return {
+            Environment.DEV: "dev-bucket",
+            Environment.PROD: "prod-bucket",
+        }[self.env]
 
     @classmethod
     def parse(cls, posargs: list[str]) -> CLIArgs:
