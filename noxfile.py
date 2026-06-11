@@ -25,8 +25,13 @@ class CLIArgs(BaseSettings):
     tag: str = "test"
     model_type: ModelType = ModelType.SAMPLE
 
-    composer_project_id: str = {Environment.DEV: "dev", Environment.PROD: "prod"}[env]
-    composer_bucket_name: str = {Environment.DEV: "dev", Environment.PROD: "prod"}[env]
+    @property
+    def composer_project_id(self) -> str:
+        return {Environment.DEV: "dev", Environment.PROD: "prod"}[self.env]
+
+    @property
+    def composer_bucket_name(self) -> str:
+        return {Environment.DEV: "dev", Environment.PROD: "prod"}[self.env]
 
     @classmethod
     def parse(cls, posargs: list[str]) -> CLIArgs:
