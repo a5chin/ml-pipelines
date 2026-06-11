@@ -64,7 +64,6 @@ def main() -> None:
     cli_args = CLIArgs()  # ty: ignore[missing-argument]
     args = PipelineCompileArgs.build(
         env=cli_args.env,
-        pipeline_name=cli_args.pipeline_name,
         tag=cli_args.tag,
         model_type=cli_args.model_type,
     )

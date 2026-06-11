@@ -11,7 +11,6 @@ class CLIArgs(BaseSettings, cli_parse_args=True, cli_ignore_unknown_args=True):
     """CLI Arguments."""
 
     env: Environment
-    pipeline_name: str
     tag: str
     model_type: ModelType
 
@@ -32,13 +31,12 @@ class PipelineCompileArgs(BaseModel):
 
     @classmethod
     def build(
-        cls, env: Environment, pipeline_name: str, tag: str, model_type: ModelType
+        cls, env: Environment, tag: str, model_type: ModelType
     ) -> PipelineCompileArgs:
         """Args for building PipelineCompileArgs.
 
         Args:
             env (Environment): Environment
-            pipeline_name (str): Pipeline name
             tag (str): Tag for the image
             model_type (ModelType): Model type
 
@@ -47,12 +45,13 @@ class PipelineCompileArgs(BaseModel):
 
         """
         env_settings = load_env_settings(env)
+        pipeline_name = f"{env}-{model_type}-pipeline"
 
         return cls(
             project_id=env_settings.project_id,
             location=env_settings.location,
             tag=tag,
-            pipeline_name=f"{env}-{pipeline_name}",
+            pipeline_name=f"{env}-{model_type}-pipeline",
             image=f"{env_settings.location}-docker.pkg.dev/{env_settings.project_id}/{pipeline_name}-docker/runner:{tag}",
             pipeline_template_host=f"https://{env_settings.location}-kfp.pkg.dev/{env_settings.project_id}/{pipeline_name}-kfp",
             model_type=model_type,

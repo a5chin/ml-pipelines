@@ -18,5 +18,5 @@ runs:
         python-version: ${{ env.PYTHON_VERSION }}
 
     - name: Install Dependencies
-      run: uv sync --frozen
+      run: uv sync --all-groups --frozen
       shell: bash

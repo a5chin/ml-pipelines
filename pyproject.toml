@@ -18,13 +18,14 @@ dependencies = [
 ]
 
 [dependency-groups]
+composer = ["apache-airflow>=3.2.2", "apache-airflow-providers-google>=22.0.0"]
 dev = [
     "cookiecutter>=2.6.0",
     "cookiecutter-data-science>=2.3.0",
     "nox>=2026.4.10",
     "pre-commit>=4.6.0",
-    "pytest>=8.4.2",
-    "pytest-cov>=7.0.0",
+    "pytest>=9.0.3",
+    "pytest-cov>=7.1.0",
     "pytest-mock>=3.15.1",
     "ruff>=0.15.15",
     "sqlfluff>=4.1.0",
@@ -32,7 +33,7 @@ dev = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["const", "enviroments", "pipelines", "tasks"]
+packages = ["composer", "const", "environments", "pipelines", "tasks"]
 
 [build-system]
 requires = ["hatchling"]
