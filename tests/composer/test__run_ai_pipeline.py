@@ -65,7 +65,7 @@ class TestModelPipelineOperator:
             )
         ],
     )
-    def test_execute_success(
+    def test_execute_success(  # ruff: ignore[PLR0917]
         self,
         mocker: MockerFixture,
         model_type: str,
