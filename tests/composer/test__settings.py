@@ -28,7 +28,7 @@ class TestComposerSettings:
             ),
         ],
     )
-    def test_composer_settings(
+    def test_composer_settings(  # ruff: ignore[PLR0917]
         self,
         project_id: str,
         location: str,
