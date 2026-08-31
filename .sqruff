@@ -1,14 +1,15 @@
-[sqlfluff]
+[sqruff]
 dialect = bigquery
+templater = jinja
+sql_file_exts = .sql
 max_line_length = 80
-
 exclude_rules =
+rules = all
 
-[sqlfluff:indentation]
+[sqruff:indentation]
+indent_unit = space
 tab_space_size = 2
+indented_joins = True
 
-[sqlfluff:rules:ambiguous.join]
+[sqruff:rules:ambiguous.join]
 fully_qualify_join_types = both
-
-[sqlfluff:rules:structure.unused_join]
-forbid_unused_join = True
