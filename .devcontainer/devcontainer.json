@@ -40,11 +40,15 @@
                 "njpwerner.autodocstring",
                 "redhat.vscode-yaml",
                 "shardulm94.trailing-spaces",
-                "sqlfluff.vscode-sqlfluff",
+                "quary.sqruff",
                 "streetsidesoftware.code-spell-checker",
                 "tamasfe.even-better-toml",
                 "yzhang.markdown-all-in-one"
-            ]
+            ],
+            "settings": {
+                "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+                "sqruff.executablePath": "${workspaceFolder}/.venv/bin/sqruff"
+            }
         }
     },
     "containerEnv": {

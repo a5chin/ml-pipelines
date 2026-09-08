@@ -44,7 +44,7 @@ It provides a structured, scalable architecture for ML pipelines with containeri
 - 🌍 **Environment Management**: Multi-environment support (dev, prod) with isolated configurations
 - ⚡ **Modern Python Tooling**: Built with [uv](https://github.com/astral-sh/uv) and [Ruff](https://github.com/astral-sh/ruff)
 - 🔒 **Type Safety**: Full type hints with ty and Pydantic validation
-- 📝 **SQL Linting**: Automated SQL quality checks with [SQLFluff](https://github.com/sqlfluff/sqlfluff) for BigQuery
+- 📝 **SQL Linting**: Automated SQL quality checks with [sqruff](https://github.com/quarylabs/sqruff) for BigQuery
 - 🚀 **CI/CD Ready**: GitHub Actions workflows for testing, linting, and Docker builds
 
 ## 📦 Prerequisites
@@ -118,14 +118,14 @@ uv run nox -s compile_pipeline -- \
 ├── pyproject.toml                  # Project dependencies & metadata
 ├── pytest.ini                      # Pytest configuration
 ├── ruff.toml                       # Ruff linter configuration
-└── .sqlfluff                       # SQLFluff SQL linter configuration
+└── .sqruff                         # sqruff SQL linter configuration
 ```
 
 **Key Files**:
 - [`main.py`](./main.py) - Entry point for task execution in containers
 - [`noxfile.py`](./noxfile.py) - Development task automation (test, lint, fmt, compile_pipeline)
 - [`pyproject.toml`](./pyproject.toml) - Project configuration and dependencies
-- [`.sqlfluff`](./.sqlfluff) - SQL linter configuration (BigQuery dialect)
+- [`.sqruff`](./.sqruff) - SQL linter configuration (BigQuery dialect)
 - [`CLAUDE.md`](./CLAUDE.md) - Architecture guide for Claude Code
 
 ## 🛠️ Development Commands
@@ -148,17 +148,17 @@ uv run nox -s test -- --junitxml=results.xml
 uv run nox -s fmt -- --ruff
 
 # Format SQL files
-uv run nox -s fmt -- --sqlfluff
+uv run nox -s fmt -- --sqruff
 
 # Format all
-uv run nox -s fmt -- --ruff --sqlfluff
+uv run nox -s fmt -- --ruff --sqruff
 
 # Run all linters
-uv run nox -s lint -- --ruff --sqlfluff --ty
+uv run nox -s lint -- --ruff --sqruff --ty
 
 # Run individual linters
 uv run nox -s lint -- --ruff     # Python linting
-uv run nox -s lint -- --sqlfluff # SQL linting
+uv run nox -s lint -- --sqruff   # SQL linting
 uv run nox -s lint -- --ty       # Type checking
 ```
 
@@ -325,7 +325,7 @@ uv run nox -s compile_pipeline -- \
 - 📘 [Kubeflow Pipelines v2](https://www.kubeflow.org/docs/components/pipelines/v2/) - KFP documentation
 - 📦 [uv Documentation](https://docs.astral.sh/uv/) - Python package manager
 - 🔍 [Ruff Documentation](https://docs.astral.sh/ruff/) - Linter and formatter
-- 📝 [SQLFluff Documentation](https://docs.sqlfluff.com/) - SQL linter and formatter
+- 📝 [sqruff Documentation](https://playground.quary.dev/docs/) - SQL linter and formatter
 - ✅ [ty](https://github.com/astral-sh/ty) - Static type checker
 - 🧪 [Pytest](https://docs.pytest.org/) - Testing framework
 - 🔧 [Nox](https://nox.thea.codes/) - Task automation tool
@@ -388,7 +388,7 @@ We welcome contributions! Please follow these steps:
 
 - ✅ Maintain **75%+ test coverage** (enforced by pytest)
 - 🎨 Follow **Ruff** formatting and linting rules ([`ruff.toml`](./ruff.toml))
-- 📝 Follow **SQLFluff** SQL formatting rules ([`.sqlfluff`](./.sqlfluff))
+- 📝 Follow **sqruff** SQL formatting rules ([`.sqruff`](./.sqruff))
 - 🔍 Pass **ty** type checking ([`ty.toml`](./ty.toml))
 - 📝 Write **clear commit messages**
 - 🧪 Add **tests** for new features

@@ -18,7 +18,7 @@ class CLIArgs(BaseSettings):
     cov_report: str = ""
     junitxml: str = ""
     ruff: bool = False
-    sqlfluff: bool = False
+    sqruff: bool = False
     ty: bool = False
 
     env: Environment = Environment.DEV
@@ -99,7 +99,7 @@ class CLIArgs(BaseSettings):
 
 @nox.session(python=False)
 def fmt(session: nox.Session) -> None:
-    """Format the code using Ruff and SQLFluff.
+    """Format the code using Ruff and sqruff.
 
     Args:
         session (nox.Session): The Nox session object.
@@ -107,7 +107,7 @@ def fmt(session: nox.Session) -> None:
     Examples:
         >>> uv run nox -s fmt -- \
         ...     --ruff \
-        ...     --sqlfluff
+        ...     --sqruff
 
     """
     args = CLIArgs.parse(session.posargs)
@@ -115,14 +115,14 @@ def fmt(session: nox.Session) -> None:
     if args.ruff:
         session.run("uv", "run", "ruff", "format", ".")
         session.log("✅ Ruff formatting completed successfully.")
-    if args.sqlfluff:
-        session.run("uv", "run", "sqlfluff", "fix", ".")
-        session.log("✅ SQLFluff formatting completed successfully.")
+    if args.sqruff:
+        session.run("uv", "run", "sqruff", "fix")
+        session.log("✅ sqruff formatting completed successfully.")
 
 
 @nox.session(python=False)
 def lint(session: nox.Session) -> None:
-    """Lint the code using Ruff, SQLFluff, and ty.
+    """Lint the code using Ruff, sqruff, and ty.
 
     Args:
         session (nox.Session): The Nox session object.
@@ -130,7 +130,7 @@ def lint(session: nox.Session) -> None:
     Examples:
         >>> uv run nox -s lint -- \
         ...     --ruff \
-        ...     --sqlfluff \
+        ...     --sqruff \
         ...     --ty
 
     """
@@ -139,9 +139,9 @@ def lint(session: nox.Session) -> None:
     if args.ruff:
         session.run("uv", "run", "ruff", "check", ".", "--fix")
         session.log("✅ Ruff linting completed successfully.")
-    if args.sqlfluff:
-        session.run("uv", "run", "sqlfluff", "lint", ".")
-        session.log("✅ SQLFluff linting completed successfully.")
+    if args.sqruff:
+        session.run("uv", "run", "sqruff", "lint", ".")
+        session.log("✅ sqruff linting completed successfully.")
     if args.ty:
         session.run("uv", "run", "ty", "check")
         session.log("✅ ty linting completed successfully.")
