@@ -38,7 +38,7 @@ class TestTrainingSettings:
             (0.1, ValidationError),
         ],
     )
-    def test_seed(self, seed: int, error: type) -> None:
+    def test_seed(self, seed: int, error: type[BaseException]) -> None:
         """Test seed attribute (valid and invalid cases)."""
         if not error:
             _ = TrainingSettings(seed=seed)
