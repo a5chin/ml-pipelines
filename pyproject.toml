@@ -11,28 +11,29 @@ readme = "README.md"
 license = { file = "LICENSE" }
 
 dependencies = [
-    "jaxtyping>=0.3.3",
+    "jaxtyping>=0.3.9",
     "kfp>=2.15.2",
     "pydantic>=2.12.3",
-    "pydantic-settings>=2.11.0",
+    "pydantic-settings>=2.14.1",
 ]
 
 [dependency-groups]
+composer = ["apache-airflow>=3.2.2", "apache-airflow-providers-google>=22.0.0"]
 dev = [
     "cookiecutter>=2.6.0",
     "cookiecutter-data-science>=2.3.0",
-    "nox>=2025.5.1",
-    "pre-commit>=4.3.0",
-    "pytest>=8.4.2",
-    "pytest-cov>=7.0.0",
+    "nox>=2026.4.10",
+    "pre-commit>=4.6.0",
+    "pytest>=9.0.3",
+    "pytest-cov>=7.1.0",
     "pytest-mock>=3.15.1",
-    "ruff>=0.14.0",
-    "sqlfluff>=3.5.0",
-    "ty>=0.0.11",
+    "ruff>=0.15.15",
+    "sqruff>=0.40.0",
+    "ty>=0.0.34",
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["const", "enviroments", "pipelines", "tasks"]
+packages = ["composer", "const", "environments", "pipelines", "tasks"]
 
 [build-system]
 requires = ["hatchling"]
