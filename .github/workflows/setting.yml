@@ -42,9 +42,6 @@ jobs:
           - environment: Production
             pattern: v*
             type: tag
-          - environment: github-pages
-            pattern: gh-pages
-            type: branch
 
     steps:
       - name: Checkout
@@ -97,21 +94,6 @@ jobs:
         with:
           client-id: ${{ vars.APP_ID }}
           private-key: ${{ secrets.APP_KEY }}
-
-      - name: Set GitHub Pages Source
-        run: |
-          gh api -X POST ${{ env.ENDPOINT }} \
-            -f "source[branch]=${{ env.BRANCH }}" \
-            -f "source[path]=${{ env.TARGET_PATH }}" --silent \
-          || \
-          gh api -X PUT ${{ env.ENDPOINT }} \
-            -f "source[branch]=${{ env.BRANCH }}" \
-            -f "source[path]=${{ env.TARGET_PATH }}"
-        env:
-          ENDPOINT: repos/${{ github.repository }}/pages
-          BRANCH: gh-pages
-          TARGET_PATH: /
-          GH_TOKEN: ${{ steps.generate-token.outputs.token }}
 
   permission:
     runs-on: ubuntu-latest

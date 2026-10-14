@@ -44,7 +44,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v6
         with:
-          images: ${{ env.REGISTRY }}/${{ github.repository }}/${{ matrix.image }}
+          images: ${{ env.REGISTRY }}/${{ github.repository }}
           tags: |
             type=ref,event=branch
             type=sha,format=long,enable=${{ github.event_name == 'push' }}
@@ -52,7 +52,7 @@ jobs:
             type=raw,value=latest,enable=${{ github.event_name == 'release' }}
           labels: |
             org.opencontainers.image.authors=a5chin <a5chin.origin+contact@gmail.com>
-            org.opencontainers.image.description=${{ matrix.description }}
+            org.opencontainers.image.description="This is a production-ready template for building Kubeflow Pipelines (KFP) workflows with Python. It provides a structured, scalable architecture for ML pipelines with containerized task execution, type-safe configuration, and comprehensive testing."
             org.opencontainers.image.documentation=https://a5chin.github.io/ml-pipelines/
             org.opencontainers.image.licenses=MIT
             org.opencontainers.image.source=https://github.com/${{ github.repository }}
@@ -65,7 +65,7 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           context: .
-          file: ${{ matrix.dockerfile }}
+          file: Dockerfile
           push: true
           provenance: false
           tags: ${{ steps.meta.outputs.tags }}
