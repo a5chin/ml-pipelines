@@ -20,12 +20,12 @@ This is a Kubeflow Pipelines (KFP) template for ML workflows built with Python, 
 
 ### Code Quality
 - Format code (Ruff): `uv run nox -s fmt -- --ruff`
-- Format SQL (SQLFluff): `uv run nox -s fmt -- --sqlfluff`
-- Format with all tools: `uv run nox -s fmt -- --ruff --sqlfluff`
+- Format SQL (sqruff): `uv run nox -s fmt -- --sqruff`
+- Format with all tools: `uv run nox -s fmt -- --ruff --sqruff`
 - Lint with Ruff only: `uv run nox -s lint -- --ruff`
-- Lint with SQLFluff only: `uv run nox -s lint -- --sqlfluff`
+- Lint with sqruff only: `uv run nox -s lint -- --sqruff`
 - Lint with ty only: `uv run nox -s lint -- --ty`
-- Lint with all tools: `uv run nox -s lint -- --ruff --sqlfluff --ty`
+- Lint with all tools: `uv run nox -s lint -- --ruff --sqruff --ty`
 
 ### Pipeline Compilation
 Compile and upload a pipeline to Kubeflow:
