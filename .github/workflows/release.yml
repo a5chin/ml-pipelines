@@ -52,7 +52,7 @@ jobs:
             type=raw,value=${{ github.event.release.tag_name }},enable=${{ github.event_name == 'release' }}
           labels: &details |
             org.opencontainers.image.authors=a5chin <a5chin.origin+contact@gmail.com>
-            org.opencontainers.image.description="This is a production-ready template for building Kubeflow Pipelines (KFP) workflows with Python. It provides a structured, scalable architecture for ML pipelines with containerized task execution, type-safe configuration, and comprehensive testing."
+            org.opencontainers.image.description=This is a production-ready template for building Kubeflow Pipelines (KFP) workflows with Python. It provides a structured, scalable architecture for ML pipelines with containerized task execution, type-safe configuration, and comprehensive testing.
             org.opencontainers.image.documentation=https://a5chin.github.io/ml-pipelines/
             org.opencontainers.image.licenses=MIT
             org.opencontainers.image.source=https://github.com/${{ github.repository }}
